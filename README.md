@@ -1,4 +1,4 @@
-# Praktyki ERP Forge 2026
+# Praktyki myOdoo.pl 2026
 
 Repozytorium służy jako wirtualny dzienniczek praktyk zawodowych dla ucznia technikum informatycznego. Zawiera plan praktyk, wpisy dzienne, artefakty z wykonanych zadań oraz materiały do nauki.
 
