@@ -1,3 +1,8 @@
+![Status](https://img.shields.io/badge/Status-Aktywne-success?style=for-the-badge&logo=github)
+![Tech](https://img.shields.io/badge/Stack-Odoo%20%7C%20Linux%20%7C%20Git-blue?style=for-the-badge)
+![Progress](https://img.shields.io/badge/Postęp-0%25-orange?style=for-the-badge)
+
+---
 # Praktyki myOdoo.pl 2026
 
 Repozytorium służy jako wirtualny dzienniczek praktyk zawodowych dla ucznia technikum informatycznego. Zawiera plan praktyk, wpisy dzienne, artefakty z wykonanych zadań oraz materiały do nauki.
