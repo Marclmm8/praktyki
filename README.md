@@ -3,6 +3,18 @@
 ![Progress](https://img.shields.io/badge/Postęp-0%25-orange?style=for-the-badge)
 
 ---
+### 📊 Postęp praktyk (120h)
+Current status: **Ready to start!**
+<br>
+<table>
+    <tr>
+        <td><strong>Godziny</strong></td>
+        <td>
+            <img src="https://geps.dev/progress/0?dangerColor=ff4b2b&warningColor=f9d423&successColor=2ecc71" alt="Progress Bar">
+        </td>
+        <td>0 / 120h</td>
+    </tr>
+</table>
 # Praktyki myOdoo.pl 2026
 
 Repozytorium służy jako wirtualny dzienniczek praktyk zawodowych dla ucznia technikum informatycznego. Zawiera plan praktyk, wpisy dzienne, artefakty z wykonanych zadań oraz materiały do nauki.
