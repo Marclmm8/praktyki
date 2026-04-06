@@ -171,7 +171,36 @@
       </div>
       <div class="status">Status: przygotowanie repo</div>
     </section>
+</section>  <!-- koniec sekcji z gridem kart -->
 
+<!-- TUTAJ Wklej nowy kod -->
+<div class="progress-container">
+  <span>Postęp: <span id="progress-hours">6/120</span></span>
+  <div class="progress-bar">
+    <div id="progress-fill"></div>
+  </div>
+</div>
+
+<!-- Lista ostatnich wpisów -->
+<section style="background:#fff;border:1px solid #e5e7eb;border-radius:20px;padding:28px;margin:24px 0;">
+  <h3>Ostatnie wpisy</h3>
+  <ul id="recent-posts">
+    <li><a href="./dziennik/2026-04-07.md">2026-04-07 — Dzień 1: start</a></li>
+  </ul>
+</section>
+
+<script>
+  // Licznik postępu
+  const total = 120;
+  const done = 6; // ZMIENIAJ TUTAJ liczbę godzin
+  const percent = (done / total * 100);
+  document.getElementById('progress-hours').textContent = `${done}/${total}`;
+  document.getElementById('progress-fill').style.width = `${percent}%`;
+</script>
+
+<!-- reszta strony -->
+</div>
+</body>
     <section class="grid">
       <article class="card">
         <h2>Zakres praktyk</h2>
