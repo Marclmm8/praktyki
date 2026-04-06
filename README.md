@@ -1,7 +1,16 @@
 ![Status](https://img.shields.io/badge/Status-Aktywne-success?style=for-the-badge&logo=github)
 ![Tech](https://img.shields.io/badge/Stack-Odoo%20%7C%20Linux%20%7C%20Git-blue?style=for-the-badge)
 ![Progress](https://img.shields.io/badge/Postęp-0%25-orange?style=for-the-badge)
+## 📋 Metryczka praktyk
+* **Uczeń:** Marcel Machałowski (Klasa III IT)
+* **Kierunek:** Technik informatyk
+* **Szkoła:** Technikum Technologii Cyfrowych w Szczecinie
+* **Miejsce praktyk:** ERP Forge Sp. z o.o. (myOdoo.pl)
+* **Termin:** 07.04.2026 – 05.05.2026
+* **Opiekun ze strony pracodawcy:** Adrian Krowicki
+* **Opiekun ze strony szkoły:** Artur Łabuz
 
+---
 ---
 ### 📊 Postęp praktyk (120h)
 Current status: **Ready to start!**
