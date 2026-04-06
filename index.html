@@ -1,1 +1,193 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Praktyki ERP Forge 2026</title>
+  <meta name="description" content="Wirtualny dzienniczek praktyk zawodowych w ERP Forge">
+  <style>
+    :root {
+      --bg: #f7f6f2;
+      --surface: #ffffff;
+      --surface-2: #f1efe9;
+      --text: #28251d;
+      --muted: #6f6d68;
+      --primary: #01696f;
+      --primary-dark: #0c4e54;
+      --border: #d8d4cc;
+      --success: #437a22;
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(0,0,0,.08);
+    }
 
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      background: linear-gradient(180deg, var(--bg), #ece8df);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .hero {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 36px;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #dcebea;
+      color: var(--primary);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: 42px;
+      line-height: 1.1;
+    }
+
+    p {
+      margin: 0 0 16px;
+      color: var(--muted);
+      max-width: 760px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .card h2 {
+      margin-top: 0;
+      font-size: 20px;
+    }
+
+    .list {
+      padding-left: 18px;
+      margin: 0;
+    }
+
+    .list li {
+      margin-bottom: 8px;
+    }
+
+    .links a {
+      display: inline-block;
+      margin-right: 12px;
+      margin-bottom: 10px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .links a:hover {
+      background: var(--primary-dark);
+    }
+
+    .status {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #e4efd9;
+      color: var(--success);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    @media (max-width: 900px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 32px;
+      }
+
+      .hero {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div class="badge">Praktyki zawodowe · 120 h · tryb zdalny</div>
+      <h1>Wirtualny dzienniczek praktyk w ERP Forge</h1>
+      <p>
+        To repozytorium dokumentuje praktyki ucznia technikum informatycznego w formie nowoczesnego dzienniczka:
+        z planem, wpisami dziennymi, screenami, artefaktami i materiałami do nauki.
+      </p>
+      <div class="links">
+        <a href="./dziennik/2026-04-07.md">Pierwszy wpis</a>
+        <a href="./materialy/linki.md">Materiały</a>
+        <a href="./README.md">README</a>
+      </div>
+      <div class="status">Status: przygotowanie repo</div>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>Zakres praktyk</h2>
+        <ul class="list">
+          <li>Linux i porządkowanie sprzętu</li>
+          <li>Git i GitHub</li>
+          <li>Odoo — podstawy użytkowe</li>
+          <li>Odoo.sh — sandbox i buildy</li>
+          <li>Dokumentowanie pracy</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h2>Zasady</h2>
+        <ul class="list">
+          <li>Praca głównie zdalna</li>
+          <li>Minimum 1 wpis dziennie</li>
+          <li>Minimum 1 sensowny commit</li>
+          <li>Screeny i notatki jako dowód pracy</li>
+          <li>Brak pracy na danych produkcyjnych</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h2>Co dalej</h2>
+        <ul class="list">
+          <li>Dodać kolejne wpisy do katalogu <code>dziennik/</code></li>
+          <li>Wrzucić screeny do <code>assets/screenshots/</code></li>
+          <li>Uzupełniać artefakty w <code>artefakty/</code></li>
+          <li>Włączyć GitHub Pages w Settings → Pages</li>
+        </ul>
+      </article>
+    </section>
+  </div>
+</body>
+</html>
