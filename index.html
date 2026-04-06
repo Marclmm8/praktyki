@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Praktyki myOdoo.pl 2026</title>
+  <link rel="icon" href="https://fav.farm/🚀">
   <meta name="description" content="Wirtualny dzienniczek praktyk zawodowych w myOdoo.pl">
   <style>
     :root {
@@ -136,6 +137,22 @@
         padding: 24px;
       }
     }
+    .progress-container { margin: 24px 0; }
+.progress-container span { display: block; margin-bottom: 8px; font-weight: 600; }
+.progress-bar { 
+  height: 12px; 
+  background: #e8f5f2; 
+  border-radius: 6px; 
+  overflow: hidden; 
+  box-shadow: inset 0 1px 3px rgba(0,0,0,.1);
+}
+#progress-fill { 
+  height: 100%; 
+  background: linear-gradient(90deg, #01696f, #006494); 
+  border-radius: 6px; 
+  transition: width .4s ease; 
+  box-shadow: 0 0 10px rgba(1,105,111,.4);
+}
   </style>
 </head>
 <body>
@@ -248,5 +265,19 @@
     </div>
   </div>
 </section>
+  <!-- Do index.html -->
+<div class="progress-container">
+  <span>Postęp: <span id="progress-hours">6/120</span></span>
+  <div class="progress-bar">
+    <div id="progress-fill" style="width: 5%;"></div>
+  </div>
+</div>
+<script>
+  const total = 120;
+  const done = 6; // praktykant zmienia tę liczbę
+  const percent = (done / total * 100);
+  document.getElementById('progress-hours').textContent = `${done}/${total}`;
+  document.getElementById('progress-fill').style.width = `${percent}%`;
+</script>
 </body>
 </html>
