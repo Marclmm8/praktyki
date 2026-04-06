@@ -1,19 +1,21 @@
-# Materiały do praktyk
+# 📚 Materiały do praktyk
 
-## Git i GitHub
-- [Quickstart for GitHub Pages](https://docs.github.com/en/pages/quickstart)
-- [What is GitHub Pages?](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages)
-- [Podstawy Git i GitHub](https://blog.askomputer.pl/podstawy-git-i-github-wprowadzenie-dla-poczatkujacych/)
+## 💻 Git i GitHub
+- [Git i GitHub w 60 minut — PO POLSKU](https://www.youtube.com/watch?v=Ebe9D5zRkvM)
+- [Podstawy Git i GitHub dla początkujących](https://blog.askomputer.pl/podstawy-git-i-github-wprowadzenie-dla-poczatkujacych/)
+- [GitHub dla początkujących — kurs interaktywny](https://codenga.pl/products/github_dla_poczatkujacych)
 
-## Linux
-- [Linux Mint dla początkujących](https://linuxporadnik.pl/linux-mint-dla-poczatkujacych-przewodnik-instalacji-i-konfiguracji/)
+## 🐧 Linux Mint
+- [Linux Mint dla początkujących — instalacja](https://linuxporadnik.pl/linux-mint-dla-poczatkujacych-przewodnik-instalacji-i-konfiguracji/)
+- [Linux Mint Beginner Guide](https://www.youtube.com/watch?v=ERvPga0sF8M)
+- [Przewodnik instalacji Linux Mint](https://elsefix.com/pl/linux-mint-installation-guide-for-beginners.html)
 
-## Odoo i Odoo.sh
-- [Odoo.sh](https://www.odoo.sh)
+## 🟢 Odoo i Odoo.sh
+- [Odoo.sh — środowisko testowe](https://www.odoo.sh/)
 - [Odoo.sh FAQ](https://www.odoo.sh/faq)
+- [MyOdoo.pl — partner ERP Forge](https://myodoo.pl/)
+- [Odoo Education — webinary](https://www.youtube.com/watch?v=JUsOdXG6N-M)
 
-## Zasada pracy
-Każdy materiał powinien kończyć się krótką notatką:
-- czego się nauczyłem,
-- co było trudne,
-- jakie pytanie chcę zadać opiekunowi.
+## 🔧 Bonus — narzędzia
+- [Markdown w 5 minut](https://www.markdownguide.org/basic-syntax/)
+- [Linux Cheat Sheet](https://github.com/plembo/techwiki.mw/awesome_cheatsheets)
