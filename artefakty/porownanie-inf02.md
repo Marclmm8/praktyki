@@ -25,3 +25,10 @@
 - **Odoo.sh** → rozszerzenie o środowisko pracy informatyka ERP [file:142]
 
 ## 📁 **Folder dokumentacja/**
+## 🎯 Zgodność z programem nauczania (INF.02)
+Nasz plan praktyk realizuje kluczowe działy kwalifikacji **INF.02** w nowoczesnym wydaniu:
+
+1.  **Montaż i administracja (Dział I i II):** Przygotowanie stacji roboczej Linux Mint oraz zarządzanie systemem.
+2.  **Eksploatacja sieci (Dział IV):** Praca w chmurze Odoo.sh i zarządzanie instancjami sandbox.
+3.  **Dokumentowanie (Dział V):** Prowadzenie wirtualnego dziennika w systemie kontroli wersji Git.
+4.  **Oprogramowanie użytkowe (Dział VII):** Nauka procesów biznesowych w systemie ERP Odoo.
