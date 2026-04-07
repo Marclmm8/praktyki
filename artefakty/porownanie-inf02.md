@@ -9,7 +9,7 @@
 
 ---
 
-## ✅ **Nasz plan praktyk (120h) — pełne pokrycie**
+## ✅ **Nasz plan praktyk (140h) — pełne pokrycie**
 
 | Dział INF.02 | Zadanie praktyczne | Godziny | Status |
 |--------------|-------------------|---------|--------|
