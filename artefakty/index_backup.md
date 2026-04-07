@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Praktyki myOdoo.pl 2026</title>
+  <link rel="icon" href="https://fav.farm/🚀">
+  <meta name="description" content="Wirtualny dzienniczek praktyk zawodowych w myOdoo.pl">
+  <style>
+    :root {
+      --bg: #f7f6f2;
+      --surface: #ffffff;
+      --surface-2: #f1efe9;
+      --text: #28251d;
+      --muted: #6f6d68;
+      --primary: #01696f;
+      --primary-dark: #0c4e54;
+      --border: #d8d4cc;
+      --success: #437a22;
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(0,0,0,.08);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Inter', Arial, sans-serif;
+      background: linear-gradient(180deg, var(--bg), #ece8df);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .hero {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 36px;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #dcebea;
+      color: var(--primary);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    h1 { margin: 0 0 12px; font-size: 42px; line-height: 1.1; }
+    p { margin: 0 0 16px; color: var(--muted); max-width: 760px; }
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    .progress-container { 
+      background: var(--surface);
+      padding: 24px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+    
+    .progress-container span { display: block; margin-bottom: 12px; font-weight: 700; color: var(--primary); }
+    
+    .progress-bar { 
+      height: 16px; 
+      background: #e8f5f2; 
+      border-radius: 8px; 
+      overflow: hidden; 
+      box-shadow: inset 0 1px 3px rgba(0,0,0,.1);
+    }
+
+    #progress-fill { 
+      height: 100%; 
+      background: linear-gradient(90deg, var(--primary), #006494); 
+      width: 0%; 
+      transition: width 1s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+    }
+
+    .recent-posts {
+      background: var(--surface);
+      padding: 24px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+    .recent-posts h3 { margin: 0 0 12px 0; font-size: 18px; }
+    .recent-posts ul { padding: 0; list-style: none; margin: 0; }
+    .recent-posts li { margin-bottom: 8px; font-size: 14px; }
+    .recent-posts a { color: var(--primary); text-decoration: none; font-weight: 600; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .card h2 { margin-top: 0; font-size: 20px; color: var(--primary); }
+    .list { padding-left: 18px; margin: 0; }
+    .list li { margin-bottom: 8px; }
+
+    .links a {
+      display: inline-block;
+      margin-right: 12px;
+      margin-bottom: 10px;
+      padding: 10px 18px;
+      border-radius: 12px;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 0.2s;
+    }
+    .links a:hover { background: var(--primary-dark); transform: translateY(-2px); }
+
+    .status-tag {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: #e4efd9;
+      color: var(--success);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    @media (max-width: 900px) {
+      .grid, .dashboard-grid { grid-template-columns: 1fr; }
+      h1 { font-size: 32px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div id="welcome-msg" style="color:var(--primary); font-weight:700; margin-bottom:10px;"></div>
+      <div class="badge">Praktyki zawodowe · 120 h · tryb zdalny</div>
+      <h1>Wirtualny dzienniczek praktyk w myOdoo.pl</h1>
+      <p>
+        To repozytorium dokumentuje praktyki ucznia technikum informatycznego w formie nowoczesnego dzienniczka:
+        z planem, wpisami dziennymi, screenami, artefaktami i materiałami do nauki.
+      </p>
+      <div class="links">
+        <a href="./dziennik/2026-04-07.md">Pierwszy wpis</a>
+        <a href="./materialy/linki.md">Materiały</a>
+        <a href="./README.md">README</a>
+      </div>
+      <div class="status-tag">Status: Przygotowanie repozytorium</div>
+    </section>
+
+    <div class="dashboard-grid">
+      <div class="progress-container">
+        <span>Bieżący postęp: <span id="progress-hours">0/120</span> h</span>
+        <div class="progress-bar">
+          <div id="progress-fill"></div>
+        </div>
+      </div>
+
+      <div class="recent-posts">
+        <h3>Ostatni wpis</h3>
+        <ul>
+          <li><a href="./dziennik/2026-04-07.md">📅 2026-04-07 — Dzień 1: Start</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="margin-bottom: 24px; text-align: center; background: rgba(255,255,255,0.5); padding: 20px; border-radius: var(--radius); border: 1px dashed var(--border);">
+      <small style="color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Technologie i Narzędzia</small>
+      <div style="display: flex; justify-content: center; gap: 20px; margin-top: 15px; filter: grayscale(100%); opacity: 0.7; transition: 0.3s;" onmouseover="this.style.filter='grayscale(0%)'; this.style.opacity='1'" onmouseout="this.style.filter='grayscale(100%)'; this.style.opacity='0.7'">
+        <img src="https://skillicons.dev/icons?i=linux,git,github,vscode,html,css&theme=light" alt="Tech Stack" />
+      </div>
+    </div>
+
+    <section class="grid">
+      <article class="card" style="border-left: 5px solid var(--primary);">
+        <h2 style="display: flex; align-items: center; gap: 8px;">
+          <span>📋</span> Dane praktykanta
+        </h2>
+        <ul class="list" style="font-size: 14px; list-style: none; padding-left: 0;">
+          <li style="margin-bottom: 10px;">
+            <strong style="color: var(--primary); display: block; font-size: 11px; text-transform: uppercase;">Uczeń</strong>
+            Marcel Machałowski (Klasa III IT)
+          </li>
+          <li style="margin-bottom: 10px;">
+            <strong style="color: var(--primary); display: block; font-size: 11px; text-transform: uppercase;">Szkoła</strong>
+            Technikum Technologii Cyfrowych w Szczecinie
+          </li>
+          <li style="margin-bottom: 10px;">
+            <strong style="color: var(--primary); display: block; font-size: 11px; text-transform: uppercase;">Opiekun (Szkoła)</strong>
+            mgr Artur Łabuz
+          </li>
+          <li style="margin-bottom: 10px;">
+            <strong style="color: var(--primary); display: block; font-size: 11px; text-transform: uppercase;">Opiekun (Firma)</strong>
+            Adrian Krowicki
+          </li>
+          <li>
+            <strong style="color: var(--primary); display: block; font-size: 11px; text-transform: uppercase;">Miejsce i Termin</strong>
+            ERP Forge (myOdoo.pl) <br> 07.04.2026 – 05.05.2026
+          </li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h2>Zakres praktyk</h2>
+        <ul class="list">
+          <li>Linux i porządkowanie sprzętu</li>
+          <li>Git i GitHub</li>
+          <li>Odoo — podstawy użytkowe</li>
+          <li>Odoo.sh — sandbox i buildy</li>
+          <li>Dokumentowanie pracy</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h2>Zasady</h2>
+        <ul class="list">
+          <li>Praca głównie zdalna</li>
+          <li>Minimum 1 wpis dziennie</li>
+          <li>Minimum 1 sensowny commit</li>
+          <li>Screeny i notatki jako dowód pracy</li>
+          <li>Brak pracy na danych produkcyjnych</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h2>Co dalej?</h2>
+        <ul class="list">
+          <li>Dodać wpisy do <code>dziennik/</code></li>
+          <li>Wrzucić screeny do <code>assets/</code></li>
+          <li>Uzupełnić <code>artefakty/</code></li>
+          <li>GitHub Actions & Pages</li>
+        </ul>
+      </article>
+    </section>
+
+    <section style="background:#fff; border:1px solid var(--border); border-radius:28px; padding:36px; margin-bottom:24px; box-shadow: var(--shadow);">
+      <div style="display:inline-block; background:#e6f4f1; color:#01696f; padding:6px 12px; border-radius:999px; font-size:14px; font-weight:700; margin-bottom:14px;">
+        Harmonogram
+      </div>
+      <h2 style="margin:0 0 16px 0; font-size:30px; color:var(--text);">Krótki plan na początek</h2>
+      <p style="margin-bottom:24px;">Praktyki skupiają się na profesjonalnym obiegu dokumentacji i poznaniu ekosystemu Odoo.</p>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:16px; margin-bottom:32px;">
+        <div style="background:#f9fafb; border:1px solid #e5e7eb; border-radius:16px; padding:18px;">
+          <strong style="display:block; margin-bottom:8px; color:var(--primary);">Tydzień 1</strong>
+          <small>Git, GitHub & Dokumentacja</small>
+        </div>
+        <div style="background:#f9fafb; border:1px solid #e5e7eb; border-radius:16px; padding:18px;">
+          <strong style="display:block; margin-bottom:8px; color:var(--primary);">Tydzień 2</strong>
+          <small>Linux Mint & Środowisko</small>
+        </div>
+        <div style="background:#f9fafb; border:1px solid #e5e7eb; border-radius:16px; padding:18px;">
+          <strong style="display:block; margin-bottom:8px; color:var(--primary);">Tydzień 3</strong>
+          <small>Odoo (User Side)</small>
+        </div>
+        <div style="background:#f9fafb; border:1px solid #e5e7eb; border-radius:16px; padding:18px;">
+          <strong style="display:block; margin-bottom:8px; color:var(--primary);">Tydzień 4</strong>
+          <small>Odoo.sh & Sandbox</small>
+        </div>
+      </div>
+
+      <div style="background:#f3f8f8; border:1px solid #cfe2e2; border-radius:22px; padding:28px;">
+        <h3 style="margin:0 0 14px 0; color:#0f4f54; font-size:24px;">🎯 Pierwszy krok (90 min)</h3>
+        <ol style="margin-bottom:20px; padding-left:20px;">
+          <li>Obejrzyj tutorial Git/GitHub.</li>
+          <li>Sklonuj to repozytorium.</li>
+          <li>Zrób pierwszy commit ze swoim imieniem.</li>
+          <li>Uruchom GitHub Pages.</li>
+        </ol>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <a href="https://www.youtube.com/watch?v=Ebe9D5zRkvM" target="_blank" style="background:var(--primary); color:#fff; text-decoration:none; padding:12px 20px; border-radius:12px; font-weight:700;">Film startowy</a>
+          <a href="https://github.com/ak-myodoo/praktyki0426" target="_blank" style="background:#374151; color:#fff; text-decoration:none; padding:12px 20px; border-radius:12px; font-weight:700;">Repozytorium</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // Konfiguracja postępu
+    const totalHours = 120;
+    const doneHours = 0; // Ustawione na 0 na start
+
+    window.addEventListener('load', () => {
+      // Skrypt powitalny
+      const hour = new Date().getHours();
+      const welcomeText = hour < 12 ? "Dzień dobry! ☀️" : hour < 18 ? "Dzień dobry! ☕" : "Dobry wieczór! 🌙";
+      document.getElementById('welcome-msg').textContent = welcomeText;
+
+      // Pasek postępu
+      const percent = (doneHours / totalHours * 100);
+      document.getElementById('progress-hours').textContent = `${doneHours}/${totalHours}`;
+      document.getElementById('progress-fill').style.width = `${percent}%`;
+    });
+  </script>
+</body>
+</html>
