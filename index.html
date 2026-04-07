@@ -26,6 +26,7 @@
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
       font-family: 'Inter', Arial, sans-serif;
@@ -35,6 +36,7 @@
     }
 
     a { color: inherit; }
+
     code {
       background: #f3f0ea;
       padding: 2px 7px;
@@ -156,12 +158,6 @@
     .btn-ghost:hover {
       transform: translateY(-2px);
       background: #faf9f6;
-    }
-
-    .btn-warning {
-      background: #fff8e6;
-      color: #7a5a00;
-      border-color: #f2ddb0;
     }
 
     .status-tag {
@@ -491,6 +487,16 @@
       font-weight: 700;
     }
 
+    .pill-success {
+      background: #e7f3de;
+      color: var(--success);
+    }
+
+    .pill-warning {
+      background: #fff3d6;
+      color: var(--warning);
+    }
+
     .entry-card-link {
       display: inline-flex;
       align-items: center;
@@ -554,8 +560,6 @@
 
     .muted { color: var(--muted); }
 
-    .danger-text { color: var(--danger); }
-
     @media (max-width: 980px) {
       .dashboard-grid { grid-template-columns: 1fr; }
       .grid, .folder-grid, .entries-grid, .timeline-grid { grid-template-columns: 1fr; }
@@ -589,7 +593,7 @@
         <a class="btn btn-secondary" href="#entries-section">📘 Przejdź do wpisów</a>
       </div>
 
-      <div class="status-tag">Status: Repozytorium gotowe do codziennych wpisów</div>
+      <div class="status-tag" id="main-status">Status: Trwa przygotowanie wpisów</div>
     </section>
 
     <div class="dashboard-grid">
@@ -602,7 +606,7 @@
         <div class="quick-stats">
           <div class="stat-box">
             <strong id="days-count">0</strong>
-            <span>Liczba wpisów</span>
+            <span>Uzupełnione dni</span>
           </div>
           <div class="stat-box">
             <strong id="hours-count">0 h</strong>
@@ -831,7 +835,7 @@
         <div>
           <div class="section-badge">Dziennik</div>
           <h2 style="margin:0 0 8px 0; font-size:30px; color:var(--text);">Wpisy w dzienniku</h2>
-          <p>Lista poniżej generuje się z jednej tablicy w JavaScript, więc dodanie nowego dnia to tylko dopisanie kolejnego obiektu.</p>
+          <p>Lista poniżej pobiera treść plików <code>.md</code> i sama rozpoznaje, które dni są już naprawdę uzupełnione.</p>
         </div>
         <div class="entries-toolbar">
           <button class="btn btn-primary" type="button" onclick="loadTemplate()">➕ Dodaj nowy wpis</button>
@@ -925,51 +929,34 @@
 
     const entries = [
       {
-        date: '2026-04-13',
         title: 'Dzień 5',
-        hours: 6,
-        summary: 'Kolejne porządki w repozytorium i uzupełnianie dokumentacji praktyk.',
-        path: './dziennik/2026-04-13.md',
-        status: 'najnowszy'
+        summary: 'Planowany kolejny dzień praktyk.',
+        path: './dziennik/2026-04-13.md'
       },
       {
-        date: '2026-04-10',
         title: 'Dzień 4',
-        hours: 6,
-        summary: 'Porządkowanie repo i kolejne notatki z wykonywanych zadań.',
-        path: './dziennik/2026-04-10.md',
-        status: 'gotowe'
+        summary: 'Planowany kolejny dzień praktyk.',
+        path: './dziennik/2026-04-10.md'
       },
       {
-        date: '2026-04-09',
         title: 'Dzień 3',
-        hours: 6,
-        summary: 'Ćwiczenia praktyczne i dokumentowanie pracy w repozytorium.',
-        path: './dziennik/2026-04-09.md',
-        status: 'gotowe'
+        summary: 'Planowany kolejny dzień praktyk.',
+        path: './dziennik/2026-04-09.md'
       },
       {
-        date: '2026-04-08',
         title: 'Dzień 2',
-        hours: 6,
-        summary: 'Przygotowanie środowiska i zbieranie materiałów do pracy.',
-        path: './dziennik/2026-04-08.md',
-        status: 'gotowe'
+        summary: 'Planowany kolejny dzień praktyk.',
+        path: './dziennik/2026-04-08.md'
       },
       {
-        date: '2026-04-07',
-        title: 'Dzień 1: Start',
-        hours: 6,
-        summary: 'Start praktyk, konfiguracja repozytorium i pierwszy wpis.',
-        path: './dziennik/2026-04-07.md',
-        status: 'start'
+        title: 'Dzień 1 – onboarding i BHP',
+        summary: 'Onboarding, BHP i start praktyk.',
+        path: './dziennik/2026-04-07.md'
       }
     ];
 
     let selectedFiles = [];
-function isEntryCompleted(entry) {
-  return Boolean(entry.date && typeof entry.hours === 'number' && entry.hours > 0);
-}
+
     function getTodayDate() {
       const now = new Date();
       const yyyy = now.getFullYear();
@@ -982,12 +969,78 @@ function isEntryCompleted(entry) {
       return entries.length + 1;
     }
 
+    function extractHeading(markdown) {
+      const match = markdown.match(/^#{1,6}\s+(.+)$/m);
+      return match ? match[1].trim() : null;
+    }
+
+    function extractRealDate(markdown) {
+      const lineMatch = markdown.match(/Data:\s*([^\n\r]+)/i);
+      if (!lineMatch) return null;
+
+      const line = lineMatch[1];
+      const dateMatch = line.match(/\b(\d{2}\.\d{2}\.\d{4})\b/);
+      return dateMatch ? dateMatch[1] : null;
+    }
+
+    function extractRealHours(markdown) {
+      const lineMatch = markdown.match(/Liczba godzin:\s*([^\n\r]+)/i);
+      if (!lineMatch) return null;
+
+      const line = lineMatch[1];
+      const hoursMatch = line.match(/\b(\d{1,2})\b/);
+      if (!hoursMatch) return null;
+
+      const value = Number(hoursMatch[1]);
+      return Number.isFinite(value) && value > 0 ? value : null;
+    }
+
+    function isEntryCompleted(entry) {
+      return Boolean(entry.realDate && typeof entry.realHours === 'number' && entry.realHours > 0);
+    }
+
     function getLatestHours() {
-  return entries
-    .filter(isEntryCompleted)
-    .reduce((sum, entry) => sum + entry.hours, 0);
-}function getLatestHours() {
-      return entries.reduce((sum, entry) => sum + (entry.hours || 0), 0);
+      return entries
+        .filter(isEntryCompleted)
+        .reduce((sum, entry) => sum + entry.realHours, 0);
+    }
+
+    function getCompletedEntriesCount() {
+      return entries.filter(isEntryCompleted).length;
+    }
+
+    async function enrichEntriesFromMarkdown() {
+      await Promise.all(
+        entries.map(async (entry) => {
+          try {
+            const response = await fetch(entry.path, { cache: 'no-store' });
+            if (!response.ok) {
+              entry.realDate = null;
+              entry.realHours = null;
+              entry.detectedTitle = entry.title;
+              entry.stateLabel = 'brak pliku';
+              return;
+            }
+
+            const markdown = await response.text();
+
+            entry.detectedTitle = extractHeading(markdown) || entry.title;
+            entry.realDate = extractRealDate(markdown);
+            entry.realHours = extractRealHours(markdown);
+
+            if (isEntryCompleted(entry)) {
+              entry.stateLabel = 'uzupełniony';
+            } else {
+              entry.stateLabel = 'plan';
+            }
+          } catch (error) {
+            entry.realDate = null;
+            entry.realHours = null;
+            entry.detectedTitle = entry.title;
+            entry.stateLabel = 'błąd odczytu';
+          }
+        })
+      );
     }
 
     function getDefaultArtifactsBlock() {
@@ -999,54 +1052,114 @@ function isEntryCompleted(entry) {
     }
 
     function entryTemplate(date) {
-      return `# ${date} — Dzień ${getNextEntryNumber()}\n\n## Co robiłem?\n- \n- \n- \n\n## Czego się nauczyłem?\n- \n- \n\n## Problemy / uwagi\n- \n\n## Artefakty / linki\n${getDefaultArtifactsBlock()}\n\n## Czas pracy\n- Liczba godzin: 6\n\n## Podsumowanie dnia\nKrótki opis efektów pracy i wniosków z dnia.\n`;
+      return `# ${date} — Dzień ${getNextEntryNumber()}
+
+## Co robiłem?
+- 
+- 
+- 
+
+## Czego się nauczyłem?
+- 
+- 
+
+## Problemy / uwagi
+- 
+
+## Artefakty / linki
+${getDefaultArtifactsBlock()}
+
+## Czas pracy
+- Liczba godzin: 6
+
+## Podsumowanie dnia
+Krótki opis efektów pracy i wniosków z dnia.
+`;
     }
 
     function renderEntries() {
       const entriesGrid = document.getElementById('entries-grid');
       const recentPostsList = document.getElementById('recent-posts-list');
 
-      entriesGrid.innerHTML = entries.map(entry => `
-        <article class="entry-card">
-          <div class="entry-card-top">
-            <div>
-              <h3>${entry.date} — ${entry.title}</h3>
-              <p>${entry.summary}</p>
-            </div>
-          </div>
-          <div class="entry-meta">
-            <span class="pill">⏱ ${entry.hours} h</span>
-            <span class="pill">📄 markdown</span>
-            <span class="pill">🏷 ${entry.status}</span>
-          </div>
-          <div class="entry-actions">
-            <a class="entry-card-link primary" href="${entry.path}">Otwórz wpis</a>
-            <a class="entry-card-link" href="./dziennik/">Folder dziennika</a>
-          </div>
-        </article>
-      `).join('');
+      entriesGrid.innerHTML = entries.map(entry => {
+        const completed = isEntryCompleted(entry);
+        const dateLabel = completed ? entry.realDate : 'data jeszcze nieuzupełniona';
+        const hoursLabel = completed ? `${entry.realHours} h` : 'brak godzin';
+        const statusClass = completed ? 'pill-success' : 'pill-warning';
+        const statusText = completed ? '✅ uzupełniony' : '📝 plan';
 
-      recentPostsList.innerHTML = entries.slice(0, 4).map(entry => `
-        <li>
-          <a class="entry-link" href="${entry.path}">
-            <span class="entry-main">
-              <strong>📅 ${entry.date} — ${entry.title}</strong>
-              <small>${entry.summary}</small>
-            </span>
-            <span class="entry-badge">${entry.hours} h →</span>
-          </a>
-        </li>
-      `).join('');
+        return `
+          <article class="entry-card">
+            <div class="entry-card-top">
+              <div>
+                <h3>${entry.detectedTitle || entry.title}</h3>
+                <p>${entry.summary}</p>
+              </div>
+            </div>
+            <div class="entry-meta">
+              <span class="pill">${dateLabel}</span>
+              <span class="pill">${hoursLabel}</span>
+              <span class="pill ${statusClass}">${statusText}</span>
+            </div>
+            <div class="entry-actions">
+              <a class="entry-card-link primary" href="${entry.path}">Otwórz wpis</a>
+              <a class="entry-card-link" href="./dziennik/">Folder dziennika</a>
+            </div>
+          </article>
+        `;
+      }).join('');
+
+      const completedEntries = entries.filter(isEntryCompleted);
+
+      if (!completedEntries.length) {
+        recentPostsList.innerHTML = `
+          <li>
+            <div class="entry-link">
+              <span class="entry-main">
+                <strong>Brak uzupełnionych wpisów</strong>
+                <small>Gdy w pliku pojawi się prawdziwa data i liczba godzin, pokaże się tutaj.</small>
+              </span>
+              <span class="entry-badge">—</span>
+            </div>
+          </li>
+        `;
+        return;
+      }
+
+      recentPostsList.innerHTML = completedEntries
+        .slice()
+        .reverse()
+        .slice(0, 4)
+        .map(entry => `
+          <li>
+            <a class="entry-link" href="${entry.path}">
+              <span class="entry-main">
+                <strong>📅 ${entry.realDate} — ${entry.detectedTitle || entry.title}</strong>
+                <small>${entry.summary}</small>
+              </span>
+              <span class="entry-badge">${entry.realHours} h →</span>
+            </a>
+          </li>
+        `).join('');
     }
 
     function updateStats() {
       const doneHours = getLatestHours();
+      const doneDays = getCompletedEntriesCount();
       const percent = doneHours / totalHours * 100;
+
       document.getElementById('progress-hours').textContent = `${doneHours}/${totalHours}`;
       document.getElementById('progress-fill').style.width = `${percent}%`;
       document.getElementById('percent-count').textContent = `${Math.round(percent)}%`;
-      document.getElementById('days-count').textContent = entries.filter(isEntryCompleted).length;
+      document.getElementById('days-count').textContent = doneDays;
       document.getElementById('hours-count').textContent = `${doneHours} h`;
+
+      const mainStatus = document.getElementById('main-status');
+      if (doneDays > 0) {
+        mainStatus.textContent = `Status: ${doneDays} ${doneDays === 1 ? 'dzień ukończony' : 'dni ukończone'} · ${doneHours} h wpisane`;
+      } else {
+        mainStatus.textContent = 'Status: Repozytorium gotowe do codziennych wpisów';
+      }
     }
 
     function loadTemplate() {
@@ -1183,15 +1296,17 @@ function isEntryCompleted(entry) {
       });
     }
 
-    window.addEventListener('load', () => {
+    window.addEventListener('load', async () => {
       const hour = new Date().getHours();
       const welcomeText = hour < 12 ? 'Dzień dobry! ☀️' : hour < 18 ? 'Dzień dobry! ☕' : 'Dobry wieczór! 🌙';
       document.getElementById('welcome-msg').textContent = welcomeText;
 
+      setupUploadHandlers();
+      generateArtifactsMarkdown();
+
+      await enrichEntriesFromMarkdown();
       renderEntries();
       updateStats();
-      generateArtifactsMarkdown();
-      setupUploadHandlers();
     });
   </script>
 </body>
