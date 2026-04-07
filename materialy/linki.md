@@ -1,9 +1,8 @@
 # 📚 Materiały do praktyk
 
-## 💻 Git i GitHub
 Zacznimjmy od tego: https://www.odoo.com/pl_PL/slides/slide/create-an-odoo-database-714?fullscreen=1#
 
-
+## 💻 Git i GitHub
 - [Git i GitHub w 60 minut — PO POLSKU](https://www.youtube.com/watch?v=Ebe9D5zRkvM)
 - [Podstawy Git i GitHub dla początkujących](https://blog.askomputer.pl/podstawy-git-i-github-wprowadzenie-dla-poczatkujacych/)
 - [GitHub dla początkujących — kurs interaktywny](https://codenga.pl/products/github_dla_poczatkujacych)
