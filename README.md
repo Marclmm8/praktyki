@@ -12,7 +12,7 @@
 
 ---
 ---
-### 📊 Postęp praktyk (120h)
+### 📊 Postęp praktyk (140h)
 Current status: **Ready to start!**
 <br>
 <table>
@@ -21,7 +21,7 @@ Current status: **Ready to start!**
         <td>
             <img src="https://geps.dev/progress/0?dangerColor=ff4b2b&warningColor=f9d423&successColor=2ecc71" alt="Progress Bar">
         </td>
-        <td>0 / 120h</td>
+        <td>0 / 140h</td>
     </tr>
 </table>
 # Praktyki myOdoo.pl 2026
