@@ -967,7 +967,9 @@
     ];
 
     let selectedFiles = [];
-
+function isEntryCompleted(entry) {
+  return Boolean(entry.date && typeof entry.hours === 'number' && entry.hours > 0);
+}
     function getTodayDate() {
       const now = new Date();
       const yyyy = now.getFullYear();
@@ -981,6 +983,10 @@
     }
 
     function getLatestHours() {
+  return entries
+    .filter(isEntryCompleted)
+    .reduce((sum, entry) => sum + entry.hours, 0);
+}function getLatestHours() {
       return entries.reduce((sum, entry) => sum + (entry.hours || 0), 0);
     }
 
@@ -1039,7 +1045,7 @@
       document.getElementById('progress-hours').textContent = `${doneHours}/${totalHours}`;
       document.getElementById('progress-fill').style.width = `${percent}%`;
       document.getElementById('percent-count').textContent = `${Math.round(percent)}%`;
-      document.getElementById('days-count').textContent = entries.length;
+      document.getElementById('days-count').textContent = entries.filter(isEntryCompleted).length;
       document.getElementById('hours-count').textContent = `${doneHours} h`;
     }
 
