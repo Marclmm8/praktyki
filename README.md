@@ -9,6 +9,7 @@
 * **Termin:** 07.04.2026 – 05.05.2026
 * **Opiekun ze strony pracodawcy:** Adrian Krowicki
 * **Opiekun ze strony szkoły:** Artur Łabuz
+* https://www.youtube.com/watch?v=oQcXHZAN3pA&list=RDoQcXHZAN3pA&start_radio=1
 
 ---
 ---
